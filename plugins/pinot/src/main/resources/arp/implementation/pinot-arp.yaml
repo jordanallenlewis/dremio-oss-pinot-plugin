@@ -1,0 +1,14 @@
+type: arp
+metadata:
+  name: Pinot
+dialect:
+  supports_limit: true
+  supports_project_pushdown: true
+  supports_filter_pushdown: true
+  supports_join_pushdown: false
+  identifier_quote_character: '`'
+  function_to_expression:
+    LOWER:
+      template: "LOWER({{0}})"
+    UPPER:
+      template: "UPPER({{0}})"
