@@ -1,14 +1,56 @@
-type: arp
 metadata:
-  name: Pinot
-dialect:
-  supports_limit: true
-  supports_project_pushdown: true
-  supports_filter_pushdown: true
-  supports_join_pushdown: false
-  identifier_quote_character: '`'
-  function_to_expression:
-    LOWER:
-      template: "LOWER({{0}})"
-    UPPER:
-      template: "UPPER({{0}})"
+  name: PINOT
+  apiname: pinot
+  spec_version: '1'
+
+syntax:
+  identifier_quote: '"'
+  supports_schemas: false
+
+data_types:
+  mappings:
+    - source:
+        name: "INT"
+      dremio:
+        name: "integer"
+    - source:
+        name: "LONG"
+      dremio:
+        name: "bigint"
+    - source:
+        name: "STRING"
+      dremio:
+        name: "varchar"
+
+relational_algebra:
+  aggregation:
+    enable: true
+    count_functions:
+      count_star:
+        enable: true
+      count:
+        enable: true
+    functions:
+    - names:
+      - "avg"
+      signatures:
+      - args:
+        - "integer"
+        return: "double"
+    - names:
+      - "max"
+      - "min"
+      signatures:
+      - args:
+        - "integer"
+        return: "integer"
+  join:
+    enable: true
+    inner:
+      enable: true
+  sort:
+    enable: true
+  project:
+    enable: true
+  union_all:
+    enable: false

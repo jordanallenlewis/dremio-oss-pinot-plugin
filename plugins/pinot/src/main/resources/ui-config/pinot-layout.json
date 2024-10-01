@@ -1,0 +1,29 @@
+{
+    "sourceType": "PINOT",
+    "metadataRefresh": {
+      "datasetDiscovery": true
+    },
+    "form": {
+      "tabs": [
+        {
+          "name": "General",
+          "isGeneral": true,
+          "sections": [
+            {
+              "name": "Connection",
+              "layout": "row",
+              "elements": [
+                {
+                  "propName": "config.controllerUrl",
+                  "validate": {
+                    "isRequired": true
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+  
